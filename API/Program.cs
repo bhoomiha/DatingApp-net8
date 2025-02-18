@@ -1,6 +1,6 @@
 using API.Data;
 using API.Extensions;
-
+using API.Middleware;
 using API.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,7 +20,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-
+app.UseMiddleware<ExceptionMiddleware>();
 app.UseCors("AllowAllOrigins");
 
 app.UseAuthentication();
